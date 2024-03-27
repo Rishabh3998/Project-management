@@ -26,6 +26,7 @@ const App = () => {
       };
       return {
         ...prev,
+        selectedProjectId: undefined,
         projects: [...prev.projects, newProject],
       };
     });
@@ -35,7 +36,10 @@ const App = () => {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-      <SideBar onStartAddProject={handleStartAddProject} />
+      <SideBar
+        onStartAddProject={handleStartAddProject}
+        projects={projectState.projects}
+      />
       {projectState.selectedProjectId === undefined ? (
         <NoProjectSelected onStartAddProject={handleStartAddProject} />
       ) : (
